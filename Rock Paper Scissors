@@ -1,8 +1,8 @@
 import random
 import time
+pointsc = pointsu = 0
 
 flag = True
-
 while flag is True:
 
     rps = ['r', 'p', 's']
@@ -31,18 +31,20 @@ while flag is True:
         print('My choice is {}'.format(choice))
         time.sleep(1)
         print('You win!')
+        print('Computer- {}\nUser- {}'.format(pointsc, pointsu))
 
 
     def lose():
         print('My choice is {}'.format(choice))
         time.sleep(1)
         print('I win!')
-
+        print('Computer- {}\nUser- {}'.format(pointsc, pointsu))
 
     def same():
         print('My choice is {} too!'.format(choice))
         time.sleep(1)
         print('Neither of us win')
+        print('Computer- {}\nUser- {}'.format(pointsc, pointsu))
 
     while True:
         enter = input("Press Enter to play or 'x' to Exit!")
@@ -81,10 +83,12 @@ while flag is True:
         dummy = [[inp, choice]]
         if ['r', 's'] in dummy or ['p', 'r'] in dummy or ['s', 'p'] in dummy:
             choice = fullchoice(choice)
+            pointsu += 1
             win()
 
         elif ['r', 'p'] in dummy or ['p', 's'] in dummy or ['s', 'r'] in dummy:
             choice = fullchoice(choice)
+            pointsc += 1
             lose()
 
     time.sleep(1)
