@@ -1,0 +1,90 @@
+import random
+import time
+
+flag = True
+
+while flag is True:
+
+    rps = ['r', 'p', 's']
+    choice = random.choice(rps)
+
+
+    def dotdotdot():
+        print('.', end='')
+        time.sleep(0.5)
+        print('.', end='')
+        time.sleep(0.5)
+        print('.')
+        time.sleep(0.5)
+
+
+    def fullchoice(x):
+        if x == 'r':
+            return 'rock'
+        elif x == 'p':
+            return 'paper'
+        else:
+            return 'scissors'
+
+
+    def win():
+        print('My choice is {}'.format(choice))
+        time.sleep(1)
+        print('You win!')
+
+
+    def lose():
+        print('My choice is {}'.format(choice))
+        time.sleep(1)
+        print('I win!')
+
+
+    def same():
+        print('My choice is {} too!'.format(choice))
+        time.sleep(1)
+        print('Neither of us win')
+
+    while True:
+        enter = input("Press Enter to play or 'x' to Exit!")
+        if enter == '':
+            break
+        elif enter == 'x':
+            print('Alright! See you another day!')
+            flag = False
+            break
+        else:
+            print('Invalid Entry\n')
+    if not flag:
+        break
+
+    print('Rock Paper Scissors', end='')
+
+    dotdotdot()
+
+    while True:
+        inp = input('SHOOT! (type r/p/s) - ')
+        if inp == 'r' or inp == 'p' or inp == 's':
+            break
+        elif inp == 'x':
+            print('Alright! See you another day!')
+            flag = False
+            break
+        else:
+            print('Invalid Entry\n')
+
+
+    if inp == choice:
+        choice = fullchoice(choice)
+        same()
+
+    else:
+        dummy = [[inp, choice]]
+        if ['r', 's'] in dummy or ['p', 'r'] in dummy or ['s', 'p'] in dummy:
+            choice = fullchoice(choice)
+            win()
+
+        elif ['r', 'p'] in dummy or ['p', 's'] in dummy or ['s', 'r'] in dummy:
+            choice = fullchoice(choice)
+            lose()
+
+    time.sleep(1)
